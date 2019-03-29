@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>翻转的图片</title>
+    <style>
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            /* transition: all 1s; */
+        }
+        .box div:nth-child(1){
+            position:absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 200px;
+            background: #000;
+        }
+        .box div:nth-child(2){
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 200px;
+            background: red;
+        }
+        .box div {
+            transition: all 2s;
+            border-radius: 50%;
+        }
+        .box div:first-child {
+            z-index: 1;
+            backface-visibility: hidden;
+        }
+        .box div:nth-child(2){
+            
+        }
+        .box:hover div {
+            transform: rotateY(180deg);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+      <div></div>
+      <div></div>
+    </div>
+</body>
+</html>
