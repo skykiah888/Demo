@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        body {
+            perspective: 800px;
+        }
+        nav {
+            margin: 100px auto;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: all 5s;
+        }
+        nav:hover {
+            transform: translateZ(100px) rotateY(90deg);
+        }
+
+        nav div:nth-child(1) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        nav div:nth-child(2) {
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: red;
+            transform: rotatex(80deg);
+
+        }
+    </style>
+</head>
+<body>
+   <nav>
+       <div></div>
+       <div></div>
+   </nav>
+</body>
+</html>
