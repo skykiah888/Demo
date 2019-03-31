@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+a{
+    display: block;
+    height: 30px;
+    width: 100px;
+    margin: 100px auto;
+    text-decoration: none;
+    text-align: center;
+    
+}
+a::after{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: yellow;
+    transform: rotateY(90deg);
+    transition: all 1s;
+}
+a:hover::after{
+transform: rotate(0)
+}
+    </style>
+</head>
+<body><div>
+   <a href="">哈哈</a></div>
+        
+   
+    
+</body>
+</html>

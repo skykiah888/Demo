@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定元素</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        window.onload = function () {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: '页面加载于 ' + new Date().toLocaleString()
+                }
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-bind:title="message">鼠标悬停之后会显示</span>
+    </div>
+    
+</body>
+
+</html>

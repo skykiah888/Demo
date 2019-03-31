@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3实现loading</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            position: absolute;
+            margin: 100px;
+            width: 40px;
+            height: 40px;
+            /* border: 1px solid #666; */
+        }
+        .box:nth-child(2) {
+           transform: rotate(45deg) /* 盒子旋转45deg */
+        }
+        .box p {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: red;
+            border-radius: 50%;
+            animation: donghua 1.5s  infinite linear ;
+        }
+
+        .box p:nth-child(1){
+            top: 0;
+            left: 0;
+        }
+        .box p:nth-child(2){
+            top: 0;
+            right: 0;
+        }
+        .box p:nth-child(3){
+            left: 0;
+            bottom: 0;
+        }
+        .box p:nth-child(4){
+            right:  0;
+            bottom: 0;
+        }
+        @keyframes donghua {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+        .box:nth-child(1) p:nth-child(1) {
+            animation-delay: -0.1s;
+        }
+        .box:nth-child(2) p:nth-child(1) {
+            animation-delay: -0.3s;
+        }
+        .box:nth-child(1) p:nth-child(2) {
+            animation-delay: -0.5s;
+        }
+        .box:nth-child(2) p:nth-child(2) {
+            animation-delay: -0.7s;
+        }
+        .box:nth-child(1) p:nth-child(3) {
+            animation-delay: -0.9s;
+        }
+        .box:nth-child(2) p:nth-child(3) {
+            animation-delay: -1.1s;
+        }
+        .box:nth-child(1) p:nth-child(4) {
+            animation-delay: -1.3s;
+        }
+        .box:nth-child(2) p:nth-child(4) {
+            animation-delay: -1.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="box">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+</body>
+</html>
