@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vue绑定样式</title>
+    <script src="../../vue.js"></script>
+    <style>
+      .activated {
+        color: red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="app">
+      <div @click="DivClick" :class="[activated,acc]">Hello World</div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          activated: ""
+        },
+        methods: {
+          DivClick: function() {
+            this.activated =
+              this.activated === "activated"
+                ? (this.activated = "")
+                : (this.activated = "activated");
+          }
+        }
+      }); -->
+
+    <div id="app">
+      <div @click="DivClick" :style="[styobj,{fontSize:'20px'}]">Hello World</div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          styobj: {
+            color: "red",
+           
+          }
+        },
+        methods: {
+          DivClick: function() {
+            this.styobj.color = this.styobj.color == "black" ? "red" : "black";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
