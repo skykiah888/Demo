@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>父子组件传值</title>
+    <script src="../../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <cont :count="0">
+       
+      </cont>
+      <cont :count="2">
+       
+      </cont>
+    </div>
+    <script>
+      var cont = {
+        props: ["count"],
+        data: function() {
+          return {
+            number: this.cont
+          };
+        },
+        template: `<div @click='click'>{{number}}</div>`,
+        methods: {
+          click: function() {
+            this.number++;
+          }
+        }
+      };
+      //局部组件
+      var app = new Vue({
+        el: "#app",
+        data: {
+          shuzi: 0
+        },
+        methods: {},
+        components: {
+          cont: cont
+        }
+      });
+    </script>
+  </body>
+</html>
