@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.clearfix::before,
+		.clearfix:after {
+			clear: both;
+			content: "";
+			display: table;
+			height: 0;
+		}
+
+		ul li {
+			float: left;
+			list-style: none;
+		}
+
+		.tab {
+			width: 500px;
+			margin: 50px auto 0;
+		}
+
+		.nav1 li {
+			/*注意没给宽度*/
+			line-height: 40px;
+			text-align: center;
+			border: 1px solid black;
+			box-sizing: border-box;
+		}
+
+		.nav2 li {
+			width: 100%;
+			height: 300px;
+			text-align: center;
+			line-height: 300px;
+			font-size: 30px;
+			display: none;
+		}
+
+		ul .active {
+			display: block;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 评分规则：	满分100，
+	上面tab的下边线没去掉-10
+	不能更换颜色-10
+	不能更改tab长度-10
+	不是动态添加的-30
+	tab的js没实现-40 -->
+	<!-- colors = ["red","orange","yellow",'green','blue','black']; -->
+	<!-- 题目：根据给出的字符串中的颜色和长度，动态配置一个tab切换 -->
+	<!-- 提示：样式都写好了，不能再加样式，缺少的样式js来补，利用js动态添加li标签，其中nav2用类名active来切换状态 -->
+
+
+
+	<div class="tab">
+		<ul class="nav1 clearfix"></ul>
+		<ul class="nav2 clearfix"></ul>
+	</div>
+
+
+
+
+</body>
+
+</html>
