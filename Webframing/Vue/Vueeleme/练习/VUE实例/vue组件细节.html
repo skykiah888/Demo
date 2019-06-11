@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue 饿了么</title>
+    <script src="../../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li ref="hello" @click="click">Hello World</li>
+        <counter></counter>
+      </ul>
+    </div>
+    <script>
+      // 全局组件
+      // Vue.component("TodoItem", {
+      //   props:['content'],
+      //   template: "<li>{{content}}</li>"
+      // });
+      // 全局组件
+      // 實現點擊刪除
+      // 局部组件
+      Vue.component("counter", {
+        template: `<div @click='handclick'>{{count}}</div>`,
+        data: function() {
+          return {
+            count: 0
+          };
+        },
+        methods: {
+          handclick: function() {
+            count++
+          }
+        }
+      });
+      //局部组件
+      var app = new Vue({
+        el: "#app",
+        data: {
+          shuzi: 0
+        },
+        methods: {
+          click: function() {
+            // console.log(this.$refs.hello);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

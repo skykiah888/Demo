@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .clearfix::before,
+      .clearfix:after {
+        clear: both;
+        content: "";
+        display: table;
+        height: 0;
+      }
+
+      ul li {
+        float: left;
+        list-style: none;
+      }
+
+      .tab {
+        width: 500px;
+        margin: 50px auto 0;
+      }
+
+      .nav1 li {
+        /*注意没给宽度*/
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid black;
+        box-sizing: border-box;
+      }
+
+      .nav2 li {
+        width: 100%;
+        height: 300px;
+        text-align: center;
+        line-height: 300px;
+        font-size: 30px;
+        display: none;
+      }
+
+      ul .active {
+        display: block;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 评分规则：	满分100，
+	上面tab的下边线没去掉-10
+	不能更换颜色-10
+	不能更改tab长度-10
+	不是动态添加的-30
+	tab的js没实现-40 -->
+    <!-- colors = ["red","orange","yellow",'green','blue','black']; -->
+    <!-- 题目：根据给出的字符串中的颜色和长度，动态配置一个tab切换 -->
+    <!-- 提示：样式都写好了，不能再加样式，缺少的样式js来补，利用js动态添加li标签，其中nav2用类名active来切换状态 -->
+
+    <div class="tab">
+      <ul class="nav1 clearfix"></ul>
+      <ul class="nav2 clearfix"></ul>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+      //   var colors = ["red", "orange", "yellow", "green", "blue"];
+      //   var $tab = $(".tab");
+      //   var $nav1 = $(".nav1");
+      //   var $nav2 = $(".nav2");
+      //   var html = "";
+      //   var html2 = "";
+      //   //   遍历数据 动态生成li
+      //   $(colors).each(function(i) {
+      //     html += `<li style="background:${colors[i]};width:100px;">${
+      //       colors[i]
+      //     }</li>`;
+      //     html2 += `<li style="background:${colors[i]}">我是${colors[i]}色</li>`;
+      //   });
+      //   //   插入节点
+      //   $nav1.append(html);
+      //   $nav2.append(html2);
+      //   //
+      //   $(".nav1 li").each(function() {
+      //     $(this).click(function() {
+      //       $(this)
+      //         .addClass("active")
+      //         .siblings()
+      //         .removeClass("active");
+      //       $(this)
+      //         .css("border-bottom", "none")
+      //         .siblings()
+      //         .css("border-bottom", "1px solid black");
+      //       // 记录当前索引值
+      //       var index = $(this).index();
+      //       $nav2
+      //         .children()
+      //         .eq(index)
+      //         .addClass("active")
+      //         .siblings()
+      //         .removeClass("active");
+      //     });
+      //   });
+      //   //默认第一个增加class
+      //   $(".nav2")
+      //     .children()
+      //     .first()
+      //     .addClass("active");
+      var colors = ["red", "orange", "yellow", "green", "blue"];
+      var nav1 = document.querySelector(".nav1");
+      var nav2 = document.querySelector(".nav2");
+      colors.forEach((item, index, arr) => {
+        var li = document.createElement("li");
+        var li2 = document.createElement("li");
+        li.innerHTML += `${item}`;
+        li2.innerHTML += `我是${item}色`;
+        li.style.cssText = `background:${item};width:100px;cursor: pointer;`;
+        li2.style.cssText = `background:${item};cursor: pointer;`;
+        nav1.appendChild(li);
+        nav2.append(li2);
+      });
+      //   设置默认状态
+      nav1.children[0].className = "active";
+      nav2.children[0].className = "active";
+      var navchid = nav1.children;
+      for (let i = 0; i < navchid.length; i++) {
+        navchid[i].index = i; //添加自定义index属性
+        navchid[i].onclick = function() {
+          //清空所有样式
+          for (let j = 0; j < navchid.length; j++) {
+            navchid[j].className = "none";
+            nav2.children[j].className = "none";
+            navchid[j].style.borderBottom = "1px solid #000000";
+          }
+          //   点击增加classname
+          navchid[this.index].className = "active";
+          navchid[this.index].style.borderBottom = "1px solid white";
+          nav2.children[this.index].className = "active";
+        };
+      }
+    </script>
+  </body>
+</html>
