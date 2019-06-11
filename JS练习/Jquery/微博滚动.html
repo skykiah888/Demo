@@ -1,0 +1,298 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery仿微博向下滚动效果 - 素材牛（www.sucainiu.com）</title>
+    <meta name="keywords" content="jQuery滚动,jQuery微博" />
+    <meta name="description" content="本文以新浪微博信息滚动实例为大家讲解如何使用jQuery来实现图文信息向下滚动效果。" />
+    <style type="text/css">
+        html,
+        body,
+        div,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        pre,
+        a,
+        code,
+        em,
+        img,
+        small,
+        strong,
+        sub,
+        sup,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent
+        }
+
+        a {
+            color: #007bc4;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .table_parameters a:hover {
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        ol,
+        ul {
+            list-style: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        html {
+            background: url(../images/demo_bg.png)
+        }
+
+        body {
+            height: 100%;
+            font: 12px/18px "Microsoft Yahei", Tahoma, Helvetica, Arial, Verdana, "\5b8b\4f53", sans-serif;
+            color: #51555c
+        }
+
+        img {
+            border: 0;
+            cursor: pointer;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0
+        }
+
+        .head {
+            border-bottom: 1px solid #dadada;
+            padding: 0 0 5px
+        }
+
+        .head_inner {
+            margin: 0 auto;
+            width: 980px
+        }
+
+        .container {
+            width: 980px;
+            min-height: 600px;
+            margin: 30px auto 0 auto;
+            border: 1px solid #d3d3d3;
+            background: #fff;
+            -moz-border-radius: 5px;
+            -khtml-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px
+        }
+
+        .demo>h2.title {
+            margin: 4px 0 30px;
+            padding: 15px 0 10px 20px;
+            border-bottom: 1px solid #d3d3d3;
+            font-size: 18px;
+            color: #a84c10;
+            background: url(../images/arrow.jpg) no-repeat 2px 14px
+        }
+
+        .foot {
+            height: 60px;
+            padding: 10px 2px;
+            line-height: 24px;
+            text-align: center
+        }
+
+        .foot a:hover {
+            color: #51555c
+        }
+
+        .btn {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px;
+            background-color: #ff8400;
+            color: #fff;
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            padding: 0 12px;
+            transition: background-color .2s linear 0s;
+            border: 0;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            background-color: #e95a00;
+            text-decoration: none
+        }
+
+        .demo {
+            width: 700px;
+            margin: 0 auto
+        }
+
+        ul.ul_demo li {
+            background: url("../images/demo_icon.gif") no-repeat scroll 0 6px;
+            line-height: 28px;
+            padding-left: 20px
+        }
+
+        .input,
+        .table input[type='text'] {
+            border: 1px solid #ccc;
+            padding: 0 5px;
+            width: 220px;
+            height: 26px;
+            line-height: 26px
+        }
+
+        #content {
+            width: 760px;
+            height: 400px;
+            margin: 30px auto 10px auto;
+            position: relative;
+            border: 1px #d3d3d3 solid;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #content ul {
+            position: absolute;
+            margin: 10px;
+            top: 0;
+            left: 0;
+            padding: 0;
+        }
+
+        #content ul li {
+            width: 100%;
+            border-bottom: 1px #ccc dotted;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+
+        #content ul li a.avatar {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-top: 2px;
+            padding: 2px;
+        }
+
+        #content ul li h4 {
+            height: 22px;
+            line-height: 22px;
+            margin-left: 60px
+        }
+
+        #content ul li p {
+            margin-left: 60px;
+            line-height: 22px;
+        }
+
+        #content img {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="demo">
+            <div id="content">
+                <ul>
+                    <li> <a href="#" class="avatar"><img src="http://tp2.sinaimg.cn/5579422785/50/5723046439/0" /></a>
+                        <h4><a href="#">腐女大本营</a></h4>
+                        <p>被禁的62部动漫下载，随手转发传递正能量！！！ </p>
+                    </li>
+                    <li> <a href="#" class="avatar"><img src="http://tp1.sinaimg.cn/3876734080/50/22898583876/1" /></a>
+                        <h4><a href="#">思想聚焦</a></h4>
+                        <p>一位高三老师对高中“早恋”的看法</p>
+                    </li>
+                    <li> <a href="#" class="avatar"><img src="http://tp1.sinaimg.cn/1615743184/50/5607220127/0" /></a>
+                        <h4><a href="#">我的脑壳长了个包</a></h4>
+                        <p>哪位大神配的音，说出来我一定跪拜为湿.....</p>
+                    </li>
+                    <li> <a href="#" class="avatar"><img src="http://tp2.sinaimg.cn/1097201945/50/40022036076/1" /></a>
+                        <h4><a href="#">徐昕</a></h4>
+                        <p>40年前的今天，张志新被割喉；40年后，文革的影子还在，但不可能回去。必须彻底反思文革，呼吁开放文革档案</p>
+                    </li>
+                    <li> <a href="#" class="avatar"><img src="http://tp2.sinaimg.cn/1816011541/50/40037057877/0" /></a>
+                        <h4><a href="#">张小娴</a></h4>
+                        <p>沒有一個人是完全的。所謂幸福，是在於認識一個人的界限而愛這個界限。─── 《約翰 . 克利斯朵夫》</p>
+                    </li>
+                    <li> <a href="#" class="avatar"><img src="http://tp1.sinaimg.cn/3160227432/50/5716965285/1" /></a>
+                        <h4><a href="#">思想箴言</a></h4>
+                        <p>【你舍得对人家好，人家才会舍得对你好】舍得：母亲给我一生的最珍贵做人礼物 ，被这个朴实的故事感动哭了。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="http://www.sucainiu.com/themes/cdn/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var scrtime;
+            $("#content").hover(function () {
+                clearInterval(scrtime);
+            }, function () {
+                scrtime = setInterval(function () {
+                    var ul = $("#content ul");
+                    var liHeight = ul.find("li:last").height();
+                    ul.animate({
+                        marginTop: liHeight + 40 + "px"
+                    }, 1000, function () {
+                        ul.find("li:last").prependTo(ul)
+                        ul.find("li:first").hide();
+                        ul.css({
+                            marginTop: 0
+                        });
+                        ul.find("li:first").fadeIn(800);
+                    });
+                }, 3000);
+            }).trigger("mouseleave");
+        });
+    </script>
+</body>
+
+</html>

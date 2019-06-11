@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest - Ajax请求</title>
+</head>
+<body>
+
+    <h1></h1>
+    <input type="button" onclick="XhrGetRequest();" value="Get发送请求" />
+    <input type="button" onclick="XhrPostRequest();" value="Post发送请求" />
+
+    <script type="text/javascript">
+
+        function GetXHR(){
+            var xhr = null;
+            if(XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }else{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xhr;
+
+        }
+
+        function XhrPostRequest(){
+            var xhr = GetXHR();
+            // 定义回调函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    // 已经接收到全部响应数据，执行以下操作
+                    var data = xhr.responseText;
+                    alert(data);
+					console.log(data)
+                }
+            };
+            // 指定连接方式和地址----文件方式
+            xhr.open('POST', "http://polong.thepenis1.com/api/Order/getmsg/cid/67", true);
+            // 设置请求头
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset-UTF-8');
+            // 发送请求
+            xhr.send('name=likai&phone=18674840939&address=北京市海淀区苏州街');
+        }
+
+        function XhrGetRequest(){
+            var xhr = GetXHR();
+            // 定义回调函数
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    // 已经接收到全部响应数据，执行以下操作
+                    var data = xhr.responseText;
+                    alert(data);
+                }
+            };
+            // 指定连接方式和地址----文件方式
+            xhr.open('get', "/test", true);
+            // 发送请求
+            xhr.send();
+        }
+
+    </script>
+
+</body>
+</html>
